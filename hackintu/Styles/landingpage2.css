@@ -1,59 +1,72 @@
 #posterimg{
     margin-top: 20px;
     margin-right: 20px;
-    height: 400px;
-    width: 400px;
-    box-shadow: 5px 10px 18px #888888;
+    height: 380px;
+    width: 450px;
+    box-shadow: 5px 10px 18px #1b1b1bbd;
+    border-radius: 20px;
     
 }
-
+body,html {
+    overflow-x: hidden;
+    }
 #bg{
     height: 300px;    
     background-image: url(../Media/cool-background.png);
     background-size: cover;
 }
 
-.container{
+#greybg{
     margin-top: 50px;
     background-color: rgba(158, 158, 158, 0.158);
     height: 500px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
     #posterimg{
-        margin-top: 20px;
+        margin-top: 50px;
         margin-right: 20px;
-        height: 200px;
-        width: 200px;
-        box-shadow: 5px 10px 18px #888888;
-
+        height: 280px;
+        width: 350px;
+        box-shadow: 5px 10px 18px #1b1b1bbd;
+        border-radius: 20px;
     }
     #bg{
-        height: 200px;        
+        height: 250px;        
+        background-image: url(../Media/cool-background.png);
+    }
+  }
+@media only screen and (max-width: 700px) {
+    #posterimg{
+        margin-top: 50px;
+        margin-right: 20px;
+        height: 200px;
+        width: 270px;
+        box-shadow: 5px 10px 18px #1b1b1bbd;
+        border-radius: 20px;
+    }
+    #bg{
+        height: 180px;        
         background-image: url(../Media/cool-background.png);
     }
   }
 
-  @media only screen and (max-width: 1000px) {
-    #posterimg{
-        margin-top: 20px;
-        margin-right: 20px;
-        height: 300px;
-        width: 300px;
-        box-shadow: 5px 10px 18px #888888;
-    }
-  }
+ 
   @media only screen and (max-width: 400px) {
     #posterimg{
-        margin-top: 20px;
+        margin-top: 50px;
         margin-right: 20px;
         height: 150px;
-        width: 150px;
-        box-shadow: 5px 10px 18px #888888;
+        width: 230px;
+        box-shadow: 5px 10px 18px #1b1b1bbd;
+        border-radius: 20px;
+        
     }
     #bg{
-        height: 150px;
+        height: 130px;
         
         background-image: url(../Media/cool-background.png);
     }
+    
+    
   }
