@@ -20,6 +20,8 @@ body,html {
     margin-top: 50px;
     background-color: rgba(158, 158, 158, 0.158);
     height: 500px;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -66,6 +68,14 @@ body,html {
         height: 130px;
         
         background-image: url(../Media/cool-background.png);
+    }
+
+    #greybg{
+        margin-top: 50px;
+        background-color: rgba(158, 158, 158, 0.158);
+        height: 500px;
+        margin-left: 30px;
+        margin-right: 30px;
     }
     
     

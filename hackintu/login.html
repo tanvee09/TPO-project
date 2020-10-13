@@ -12,6 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./Styles/landingpage.css">
     <link rel="stylesheet" href="./Styles/landingpage2.css">
+    <link rel="stylesheet" href="./Styles/login.css">
     
 </head>
 
@@ -26,8 +27,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item active">
-                    <a class="nav-link" href="javascript:void(0);">Dashboard</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="landingpage.html">Dashboard</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="javascript:void(0);">Address Book</a>
@@ -42,19 +43,37 @@
                     <a class="nav-link" href="javascript:void(0);"></i>Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link active" href="javascript:void(0);">Login</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div id="bg">
-        
-        <img id="posterimg" src="./Media/poster4.png" alt="" class="float-right">
-    </div>
-    <div class="fluid-container" id="greybg">
+    <div id="bluebg">       
+       
 
+<div class="cont">
+  
+    <div class="form">
+      <form action="">
+        <h1>Login</h1>
+        <input type="text"
+               class="user"
+               placeholder="Username"/>
+        <input type="password" 
+               class="pass"
+               placeholder="Password"/>
+        <button class="login">Login</button>
+       <a href="register.html" id="register">New? Register here</a> 
+      </form>
     </div>
-   
+    
+  
+  </div>
+        
+    </div>
+    
+    
+    
     
     
     <script src="./Styles/landingpage.js"></script> 
