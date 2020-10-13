@@ -49,7 +49,7 @@ app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
 
 app.get("/users/logout", (req, res) => {
     req.logOut();
-    res.render("index", { message: "You have logged out successfully" });
+    res.render("landingpage", { message: "You have logged out successfully" });
 });
 
 app.post("/users/register", async (req, res) => {
