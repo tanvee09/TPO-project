@@ -16,6 +16,8 @@ initializePassport(passport);
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.use(express.json());
+app.use(express.static("static"));
+app.use(express.static("media"));
 
 app.use(
     session({
@@ -30,7 +32,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("landingpage");
 });
 
 app.get("/users/register", checkAuthenticated, (req, res) => {
@@ -90,7 +92,8 @@ app.post("/users/register", async (req, res) => {
                 console.log(results.rows);
 
                 if (results.rows.length > 0) {
-                    return res.render("register", { message: "Email already registered" });
+                    errors.push({ message: "Email already registered" });
+                    return res.render("register", { errors, name, email, password, password2 });
                 } else {
                     pool.query(
                         `INSERT INTO users (name, email, password)
@@ -102,7 +105,7 @@ app.post("/users/register", async (req, res) => {
                                 throw err;
                             }
                             console.log(results.rows);
-                            req.flash("success_msg", "You are now registered. Please log in");
+                            req.flash("success_msg", "You are now registered. Please log in.");
                             res.redirect("/users/login");
                         }
                     );
@@ -113,7 +116,7 @@ app.post("/users/register", async (req, res) => {
 });
 
 app.post("/users/login", passport.authenticate("local", {
-    successRedirect: "/users/dashboard",
+    successRedirect: "/",
     failureRedirect: "/users/login",
     failureFlash: true
   })

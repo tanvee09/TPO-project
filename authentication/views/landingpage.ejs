@@ -12,7 +12,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/styles/landingpage.css">
     <link rel="stylesheet" href="/styles/landingpage2.css">
-    <link rel="stylesheet" href="/styles/login.css">
     
 </head>
 
@@ -27,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/">Dashboard</a>
                 </li>
                 <li class="nav-item ">
@@ -43,64 +42,20 @@
                     <a class="nav-link" href="javascript:void(0);"></i>Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="javascript:void(0);">Login</a>
+                    <a class="nav-link" href="/users/login">Login</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div id="bluebg">
-
-    <% if(messages.error) { %>
-        <div class="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-            <%= messages.error %>
-        </div>
-    <% } %>
-
-    <% if(messages.success_msg) { %>
-        <div class="alert pos">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-            <%= messages.success_msg %>
-        </div>
-    <% } %>
-    
-    
-<!--         
-        <ul>
-            <% if(messages.success_msg) { %>
-                <li><%= messages.success_msg %></li>
-            <% } %>
-        </ul>
-    
-        <ul>
-            <% if(messages.error) { %>
-                <li><%= messages.error %></li>
-            <% } %>
-        </ul> -->
-       
-
-<div class="cont">
-  
-    <div class="form">
-      <form action="/users/login" method="POST">
-        <h1>Login</h1>
-        <input type="text"
-               class="user"
-               placeholder="Email" name="email"/>
-        <input type="password" 
-               class="pass"
-               placeholder="Password" name="password"/>
-        <button type="submit" class="login">Login</button>
-       <a href="/users/register" id="register">New? Register here</a> 
-      </form>
-    </div>
-    
-  
-  </div>
+    <div id="bg">
         
+        <img id="posterimg" src="/media/poster4.png" alt="" class="float-right">
     </div>
+    <div class="fluid-container" id="greybg">
+
+    </div>
+   
     
-       
     
     <script src="/styles/landingpage.js"></script> 
     
