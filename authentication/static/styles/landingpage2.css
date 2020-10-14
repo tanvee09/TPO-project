@@ -12,7 +12,7 @@ body,html {
     }
 #bg{
     height: 300px;    
-    background-image: url(../Media/cool-background.png);
+    background-image: url(/media/cool-background.png);
     background-size: cover;
 }
 
@@ -35,7 +35,7 @@ body,html {
     }
     #bg{
         height: 250px;        
-        background-image: url(../Media/cool-background.png);
+        background-image: url(/media/cool-background.png);
     }
   }
 @media only screen and (max-width: 700px) {
@@ -49,7 +49,7 @@ body,html {
     }
     #bg{
         height: 180px;        
-        background-image: url(../Media/cool-background.png);
+        background-image: url(/media/cool-background.png);
     }
   }
 
@@ -67,7 +67,7 @@ body,html {
     #bg{
         height: 130px;
         
-        background-image: url(../Media/cool-background.png);
+        background-image: url(/media/cool-background.png);
     }
 
     #greybg{

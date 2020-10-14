@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <style>
+            h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
+            p{font-size: 16px; text-align: center;}
+            form{width: 400px; max-width: 100%; padding: 20px; margin: 20px auto;}
+            input, label{display: block; margin: 10px 0; padding: 5px; width: 100%;}
+            input[type='submit']{width: auto;}
+        </style>
+
+    </head>
+
+<body>
+<!--<% include partials/nav.ejs %> -->
+<h1> Contact us!</h1>
+
+<p>Contact for cool stuff</p>
+
+<form id="contact-form" method="POST" action="/contact">
+
+    <label for="who">Who do you wanna contact?</label>
+    <input type="text" name="who" value="<%= qs.person %>">
+    <label for="department">Which dept?</label>
+    <input type="text" name="department" value="<%= qs.dept %>">
+    <label for="email">Your email</label>
+    <input type="email" name="email"/>
+    <input type="submit" name="submit" />
+
+</form>
+
+</body>
+
+</html>
