@@ -42,6 +42,17 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
 
+
+
+app.get("/student",  (req, res) => {
+    res.render("studentpage.ejs");
+});
+
+
+app.get("/adminpage", (req, res) => {
+    res.render("adminpage.ejs");
+});
+
 app.get("/admin/login", checkAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
@@ -119,14 +130,14 @@ app.post("/users/register", async (req, res) => {
 });
 
 app.post("/users/login", passport.authenticate('users', {
-    successRedirect: "/",
+    successRedirect: "/student",
     failureRedirect: "/users/login",
     failureFlash: true
   })
 );
 
 app.post("/admin/login", passport.authenticate('admin', {
-    successRedirect: "/",
+    successRedirect: "/adminpage",
     failureRedirect: "/admin/login",
     failureFlash: true
   })
@@ -134,7 +145,7 @@ app.post("/admin/login", passport.authenticate('admin', {
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect("/users/dashboard");
+        return res.redirect("/student");
     }
     next();
 }
