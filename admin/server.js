@@ -42,6 +42,10 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
 
+app.get("/admin/login", checkAuthenticated, (req, res) => {
+    res.render("login.ejs");
+});
+
 app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
     res.render("dashboard", { user: req.user.name });
 });
@@ -95,10 +99,10 @@ app.post("/users/register", async (req, res) => {
                     return res.render("register", { errors, name, email, password, password2 });
                 } else {
                     pool.query(
-                        `INSERT INTO users (name, email, password)
-                        VALUES ($1, $2, $3)
+                        `INSERT INTO users (name, email, password, isadmin)
+                        VALUES ($1, $2, $3, $4)
                         RETURNING id, password`,
-                        [name, email, hashedPassword],
+                        [name, email, hashedPassword, '0'],
                         (err, results) => {
                             if (err) {
                                 throw err;
@@ -114,9 +118,16 @@ app.post("/users/register", async (req, res) => {
     }
 });
 
-app.post("/users/login", passport.authenticate("local", {
+app.post("/users/login", passport.authenticate('users', {
     successRedirect: "/",
     failureRedirect: "/users/login",
+    failureFlash: true
+  })
+);
+
+app.post("/admin/login", passport.authenticate('admin', {
+    successRedirect: "/",
+    failureRedirect: "/admin/login",
     failureFlash: true
   })
 );
@@ -134,14 +145,6 @@ function checkNotAuthenticated(req, res, next) {
     }
     res.redirect("/users/login");
 }
-
-app.get("/student", (req, res) => {
-    res.render("studentpage");
-});
-
-app.get("/adminpage", (req, res) => {
-    res.render("adminpage");
-});
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
