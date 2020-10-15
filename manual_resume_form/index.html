@@ -41,11 +41,7 @@
                             <label for="college_roll">College Roll number :</label>
                             <input type="text" name="college_roll" id="college_roll" required/>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email ID :</label>
-                            <input type="email" name="email" id="email" />
-                        </div>
-                       
+             
                         <div class="form-group">
                             <label for="branch">Branch :</label>
                             <div class="form-select">
@@ -58,35 +54,49 @@
                                 <span class="select-icon" style="color: whitesmoke;"><i class="zmdi zmdi-chevron-down"></i></span>
                             </div>
                         </div>
-<!--EDUCATION-->
 
+<!--Links-->
+<div>
+    <h2>Find me on:</h2>
+    
+    <fieldset>
+        <legend>Social Website Links</legend>
+
+            <label for="link">Personal Portfolio</label>
+            <input type="url" name="link" id="link">
+
+            <label for="link">Linkedin</label>
+            <input type="url" name="link" id="link">
+
+            <label for="link">GitHub</label>
+            <input type="url" name="link" id="link">
+
+            <label for="link">GitLab</label>
+            <input type="url" name="link" id="link">
+
+    </fieldset>
+
+</div>
+<br>
+<!--EDUCATION-->
                         <div>
                         <h2>Education Details</h2>
                         <!--College details-->
                         <div class="form-row">
                             
                             <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name">College Name:</label>
-                                    <input type="text" name="name" id="name" required/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="marks">Average GPA:</label>
+                                <center><div class="form-group">
+                                    <label for="marks">Average GPA in College:</label>
                                     <input type="number" name="marks" id="marks" required/>
-                                </div>
+                                </div></center>
                             </div>
-                        </div>
-                        <!--Secondary School Details-->
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Class XIIth School:</label>
-                                <input type="text" name="name" id="name" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="marks">Percentage obtained:</label>
+
+                            <center><div class="form-group">
+                                <label for="marks">Percentage in XIIth:</label>
                                 <input type="number" name="marks" id="marks" required/>
-                            </div>
+                            </div></center>
                         </div>
+                       
 
                     </div>
 
@@ -95,38 +105,42 @@
                     <h2>Skills</h2>
                     <fieldset>
                         <legend>Programming Languages:</legend>
-                        <label for="language"></label><br>
+                        <input type="checkbox" id="lang1" name="lang1">
+                        <label for="lang1">C++</label><br>
+                        <input type="checkbox" id="lang2" name="lang2">
+                        <label for="lang2">Python</label><br>
+                        <input type="checkbox" id="lang3" name="lang3" >
+                        <label for="lang3">Java</label><br>                    
+                        <label for="language">Others</label><br>
                         <input type="text" id="language" name="language"><br>
-                        <label for="language"></label><br>
-                        <input type="text" id="language" name="language"><br>
-                        <label for="language"></label><br>
-                        <input type="text" id="language" name="language"><br><br>
 
                       </fieldset>
 
                       <fieldset>
                         <legend>Technologies:</legend>
-                        <label for="tech"></label><br>
-                        <input type="text" id="tech" name="tech"><br>
-                        <label for="tech"></label><br>
-                        <input type="text" id="tech" name="tech"><br>
-                        <label for="tech"></label><br>
-                        <input type="text" id="tech" name="tech"><br>
-                        <label for="tech"></label><br>
-                        <input type="text" id="tech" name="tech"><br><br>
-
+                        <input type="checkbox" id="tech1" name="tech1">
+                        <label for="tech1">App/Web Development</label><br>
+                        <input type="checkbox" id="tech1" name="tech1">
+                        <label for="tech1">Machine Learning/Deep Learning</label><br>
+                        <input type="checkbox" id="tech1" name="tech1">
+                        <label for="tech1">Artificial Intelligence</label><br>
+                        <label for="language">Others</label><br>
+                        <input type="text" id="language" name="language"><br>
+                        
+                        
                       </fieldset>
-
+                      <br>
                       <fieldset>
                         <legend>Other Skills:</legend>
-                        <label for="skill"></label><br>
-                        <input type="text" id="skill" name="skill"><br>
-                        <label for="skill"></label><br>
-                        <input type="text" id="skill" name="skill"><br>
-                        <label for="skill"></label><br>
-                        <input type="text" id="skill" name="skill"><br>
-                        <label for="skill"></label><br>
-                        <input type="text" id="skill" name="skill"><br><br>
+                        <input type="checkbox" id="other1" name="other1">
+                        <label for="other1">Soft Skills</label><br>
+                        <input type="checkbox" id="other1" name="other1">
+                        <label for="other1">Presentation Skills</label><br>
+                        <input type="checkbox" id="other1" name="other1">
+                        <label for="other1">Team Work</label><br>
+                        <label for="language">Others</label><br>
+                        <input type="text" id="language" name="language"><br>
+                        
 
                       </fieldset>
 
@@ -201,11 +215,7 @@
                         <label for="achieve"></label>
                         <input type="text" id="achieve" name="achieve"><br>
 
-                        <label for="achieve"></label>
-                        <input type="text" id="achieve" name="achieve"><br><br>
-
-
-
+                       
                     </fieldset>
                     
 
@@ -267,51 +277,8 @@
 
 
                 </div>
-<!--Links-->
-                <div>
-                    <h2>Find me on:</h2>
-                    
-                    <fieldset>
-                        <legend>Social Website Links</legend>
 
-                            <label for="link">Personal Portfolio</label>
-                            <input type="url" name="link" id="link">
-
-                            <label for="link">Linkedin</label>
-                            <input type="url" name="link" id="link">
-
-                            <label for="link">GitHub</label>
-                            <input type="url" name="link" id="link">
-
-                            <label for="link">GitLab</label>
-                            <input type="url" name="link" id="link">
-
-                    </fieldset>
-
-                </div>
-                <br>
-                   
-    <!--Hobbies-->
-    <div>
-        <h2>Hobbies/ Interests:</h2>
-        
-        <fieldset>
-            <legend>For recreation I do:</legend>
-
-                <label for="hobby"></label>
-                <input type="text" name="hobby" id="hobby">
-
-                <label for="hobby"></label>
-                <input type="text" name="hobby" id="hobby">
-
-                <label for="hobby"></label>
-                <input type="text" name="hobby" id="hobby">
-
-                
-        </fieldset>
-
-    </div>
-
+  
     <!--Resume-->
         <div>
             <h2>Resume</h2>
