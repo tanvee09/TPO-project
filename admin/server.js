@@ -44,11 +44,15 @@ app.get("/users/register", checkAuthenticated, (req, res) => {
     res.render("register.ejs");
 });
 
+app.get("/users/profileform", checkNotAuthenticatedAsStudent, (req, res) => {
+    res.render("studentprofile.ejs");
+});
+
 app.get("/users/login", checkAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
 
-app.get("/student",  (req, res) => {
+app.get("/student",  checkNotAuthenticatedAsStudent, (req, res) => {
     res.render("studentpage.ejs");
 });
 
@@ -60,7 +64,7 @@ app.get("/admin/login", checkAuthenticated, (req, res) => {
     res.render("adminlogin.ejs");
 });
 
-app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
+app.get("/users/dashboard", checkNotAuthenticatedAsStudent, (req, res) => {
     res.render("dashboard", { user: req.user.name });
 });
 
@@ -76,7 +80,11 @@ app.get("/admin/logout", (req, res) => {
 
 app.get("/admin/mail", checkNotAuthenticatedAsAdmin, (req, res) => {
     res.render("mail");
-})
+});
+
+app.get("/admin/postjob", checkNotAuthenticatedAsAdmin, (req, res) => {
+    res.render("postjob.ejs");
+});
 
 app.post("/users/register", async (req, res) => {
     let { name, email, password, password2 } = req.body;
@@ -140,6 +148,81 @@ app.post("/users/register", async (req, res) => {
         );
     }
 });
+
+// app.post("/users/profileform", async (req, res) => {
+//     let { 
+//         rno,
+//         branch,
+//         gpa,
+//         perc,
+//         lang1,
+//         lang2,
+//         lang3,
+//         langlink,
+//         tech1,
+//         tech2,
+//         techlink
+//      } = req.body;
+
+//     let errors = [];
+
+//     console.log({
+//         name,
+//         email,
+//         password,
+//         password2
+//     });
+
+//     if (!name || !email || !password || !password2) {
+//         errors.push({ message: "Please enter all fields" });
+//     }
+
+//     if (password.length < 6) {
+//         errors.push({ message: "Password must be a least 6 characters long" });
+//     }
+
+//     if (password !== password2) {
+//         errors.push({ message: "Passwords do not match" });
+//     }
+
+//     if (errors.length > 0) {
+//         res.render("register", { errors, name, email, password, password2 });
+//     } else {
+//         hashedPassword = await bcrypt.hash(password, 10);
+//         console.log(hashedPassword);
+//         pool.query(
+//             `SELECT * FROM users
+//             WHERE email = $1`,
+//             [email],
+//             (err, results) => {
+//                 if (err) {
+//                     console.log(err);
+//                 }
+//                 console.log(results.rows);
+
+//                 if (results.rows.length > 0) {
+//                     errors.push({ message: "Email already registered" });
+//                     return res.render("register", { errors, name, email, password, password2 });
+//                 } else {
+//                     pool.query(
+//                         `INSERT INTO users (name, email, password, isadmin)
+//                         VALUES ($1, $2, $3, $4)
+//                         RETURNING id, password`,
+//                         [name, email, hashedPassword, '0'],
+//                         (err, results) => {
+//                             if (err) {
+//                                 throw err;
+//                             }
+//                             console.log(results.rows);
+//                             req.flash("success_msg", "You are now registered. Please log in.");
+//                             res.redirect("/users/login");
+//                         }
+//                     );
+//                 }
+//             }
+//         );
+//     }
+// });
 
 
 app.post("/admin/mail", async (req, res) => {
@@ -210,6 +293,40 @@ app.post("/admin/mail", async (req, res) => {
     }
 });
 
+app.post("/admin/postjob", async (req, res) => {
+    let { companyname, role, qty, package, link, gpa, backs, skills } = req.body;
+
+    let errors = [];
+
+    console.log({
+        companyname, role, qty, package, link, gpa, backs, skills
+    });
+
+    if (!companyname || !role || !qty || !package || !link || !gpa || !backs || !skills) {
+        errors.push({ message: "Please enter all fields" });
+    }
+
+    if (errors.length > 0) {
+        res.render("postjob", { errors, companyname, role, qty, package, link, gpa, backs, skills });
+    } else {
+
+        pool.query(
+            `INSERT INTO postings (companyname, role, qty, package, link, gpa, backs, skills)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            RETURNING companyname, role`,
+            [companyname, role, qty, package, link, gpa, backs, skills],
+            (err, results) => {
+                if (err) {
+                    throw err;
+                }
+                console.log(results.rows);
+                req.flash("success_msg", "Job posted succesfully!");
+                res.redirect("/admin/postjob");
+            }
+        );
+    }
+});
+
 app.post("/users/login", passport.authenticate('users', {
     successRedirect: "/student",
     failureRedirect: "/users/login",
@@ -256,6 +373,16 @@ function checkNotAuthenticatedAsAdmin(req, res, next) {
         req.logOut();
     res.redirect("/admin/login");
 }
+
+function checkNotAuthenticatedAsStudent(req, res, next) {
+    if (req.isAuthenticated() && !req.user.isadmin ) {
+        return next();
+    }
+    if (req.isAuthenticated())
+        req.logOut();
+    res.redirect("/users/login");
+}
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
