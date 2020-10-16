@@ -48,15 +48,11 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
 
-app.get("/preparationcorner", (req, res) => {
-    res.render("./interviewprep/index")
-});
-
 app.get("/student",  (req, res) => {
     res.render("studentpage.ejs");
 });
 
-app.get("/adminpage", checkNotAuthenticated, (req, res) => {
+app.get("/adminpage", checkNotAuthenticatedAsAdmin, (req, res) => {
     res.render("adminpage.ejs");
 });
 
@@ -78,7 +74,7 @@ app.get("/admin/logout", (req, res) => {
     res.render("landingpage", { message: "You have logged out successfully" });
 });
 
-app.get("/admin/mail", checkNotAuthenticated, (req, res) => {
+app.get("/admin/mail", checkNotAuthenticatedAsAdmin, (req, res) => {
     res.render("mail");
 })
 
@@ -230,7 +226,10 @@ app.post("/admin/login", passport.authenticate('admin', {
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect("/student");
+        if (req.user.isadmin)
+            return res.redirect("/adminpage");
+        else
+            return res.redirect("/student");
     }
     next();
 }
@@ -244,52 +243,19 @@ function checkNotAuthenticated(req, res, next) {
 
 // function checkAuthenticatedAsAdmin(req, res, next) {
 //     if (req.isAuthenticated()) {
-//         console.log("uwu");
-//         let email = req.user.email;
-//         console.log("owo");
-//         pool.query(
-//             `SELECT * FROM users WHERE email = $1 AND isadmin = TRUE`,
-//             [email],
-//             (err, results) => {
-//               if (err) {
-//                     throw err;
-//               }
-      
-//               if (results.rows.length > 0) {
-//                     console.log("isAdmin");
-//                     return res.redirect("/adminpage");
-//               } else {
-//                     return next();
-//               }
-//             }
-//         );
+//         return res.redirect
 //     }
-//     return next();
+//     next();
 // }
 
-// function checkNotAuthenticatedAsAdmin(req, res, next) {
-//     if (req.isAuthenticated()) {
-//         pool.query(
-//             `SELECT * FROM users WHERE email = $1 AND isadmin = TRUE`,
-//             [req.user.email],
-//             (err, results) => {
-//               if (err) {
-//                 throw err;
-//               }
-//               if (results.rows.length > 0) {
-//                     console.log("isAdmin");
-//                     return res.render("/adminpage");
-//               } else {
-//                 req.logOut();
-//                 return res.redirect("/admin/login");
-//               }
-//               return;
-//             }
-//         );
-//     }
-//     req.logOut();
-//     res.redirect("/admin/login");
-// }
+function checkNotAuthenticatedAsAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.isadmin ) {
+        return next();
+    }
+    if (req.isAuthenticated())
+        req.logOut();
+    res.redirect("/admin/login");
+}
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
