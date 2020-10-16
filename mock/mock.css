@@ -1,0 +1,64 @@
+body{
+    background-color: aquamarine;
+}
+
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
+    background-color: #1d81af;
+    width: 350px;
+    border-radius: 15px;
+    text-align: center;
+
+}
+.heading{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: center;
+}
+.ques{
+    margin-left: 20px;
+}
+#submit{
+    align-items: center;
+    background-color: rgb(2, 175, 60);
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    border-radius: 10px;
+    width: 150px;
+    border-color: whitesmoke;
+    box-shadow: whitesmoke;
+    height: 50px;
+    margin-top: 80px;
+    margin-left: 660px;  
+}
+#submit:hover{
+    transform: scale(1.0);
+    /*color: rgb(50, 233, 50);*/
+    background-color:  rgb(238, 84, 37);
+    transition-duration: 5ms;
+    /*box-shadow: 5px 5px 15px rgba(0,0,0,0.6);*/
+    
+}
+
+#countdown-container {
+    display: inline-block; /*displays divs on a line*/
+    width: 300px; /*gives the div element a width of 300px*/
+    margin-left: 950px;
+    border-radius: 15px; /*curves the edges of the div element by 5px;*/
+    background: #1d81af; /*gives the div element a background color*/
+}
+#countdown {
+    font-family: "Fira Sans", sans-serif; /*changes the text font in the divelement */
+    display: inline-block; /*displays divs on a line*/
+    padding: 30px; /*creates 30px space between the content of the div element and the walls of the div element*/
+    background: #1d81af;
+    color: white; /*changes the text color in the div element*/
+}
+
+#countdown span {
+    font-weight: bold; /*boldens text in the span element*/
+    font-size: 30px; /*changes the text size in the span element*/
+}
