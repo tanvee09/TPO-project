@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/styles/landingpage2.css">
     <link rel="stylesheet" href="/styles/landingpage3.css">
     <link rel="stylesheet" href="/styles/adminpage.css">
-    <link rel="stylesheet" href="/styles/login.css">
     
 </head>
 
@@ -30,15 +29,15 @@
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                 <li class="nav-item">
-                    <a class="nav-link" href="/adminpage">Dashboard</a>
+                    <a class="nav-link" href="">Dashboard</a>
                 </li>
                 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/admin/postjob">Post Job</a>
+                    <a class="nav-link" href="javascript:void(0);"></i>Student Details</a>
                 </li>
                
                 <li class="nav-item ">
-                  <a class="nav-link" href="">Send Email</a>
+                  <a class="nav-link" href="/admin/mail">Send Email</a>
               </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/logout">Logout</a>
@@ -46,38 +45,11 @@
             </ul>
         </div>
     </nav>
-
-    <% if(typeof errors != 'undefined') { %>
-        <% errors.forEach(error => { %>
-            <div class="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                <%=error.message %>
-            </div>
-        <% }) %>
-    <% } %>
-
-    <% if(messages.success_msg) { %>
-        <div class="alert pos">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-            <%= messages.success_msg %>
-        </div>
-    <% } %>
   
  
-    <div class="cont mails">
-  
-        <div class="form">
-          <form action="/admin/mail" method="POST">
-            <h1>Send Mail</h1>
-            <input type="text"
-                   class="subj"
-                   placeholder="Subject" name="subject"/>
-            <textarea class="mailbody"
-                   placeholder="Body of email" name="mailbody" rows="9"></textarea>
-            <button type="submit" class="login">Send Mail to all Students</button>
-          </form>
-        </div>      
-      </div>
+    <div class="fluid-container h-100" id='admincontainer'>
+        
+    </div>
     
      
   

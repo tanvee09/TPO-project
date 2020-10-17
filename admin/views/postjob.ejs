@@ -12,8 +12,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/styles/landingpage.css">
     <link rel="stylesheet" href="/styles/landingpage2.css">
-    <link rel="stylesheet" href="/styles/landingpage3.css">
-    <link rel="stylesheet" href="/styles/adminpage.css">
     <link rel="stylesheet" href="/styles/login.css">
     
 </head>
@@ -34,11 +32,11 @@
                 </li>
                 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/admin/postjob">Post Job</a>
+                    <a class="nav-link" href="">Post Job</a>
                 </li>
                
                 <li class="nav-item ">
-                  <a class="nav-link" href="">Send Email</a>
+                  <a class="nav-link" href="/admin/mail">Send Email</a>
               </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/logout">Logout</a>
@@ -46,48 +44,84 @@
             </ul>
         </div>
     </nav>
-
-    <% if(typeof errors != 'undefined') { %>
-        <% errors.forEach(error => { %>
-            <div class="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                <%=error.message %>
-            </div>
-        <% }) %>
-    <% } %>
-
-    <% if(messages.success_msg) { %>
-        <div class="alert pos">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-            <%= messages.success_msg %>
-        </div>
-    <% } %>
-  
- 
-    <div class="cont mails">
-  
-        <div class="form">
-          <form action="/admin/mail" method="POST">
-            <h1>Send Mail</h1>
-            <input type="text"
-                   class="subj"
-                   placeholder="Subject" name="subject"/>
-            <textarea class="mailbody"
-                   placeholder="Body of email" name="mailbody" rows="9"></textarea>
-            <button type="submit" class="login">Send Mail to all Students</button>
-          </form>
-        </div>      
-      </div>
+    <div id="bluebg">    
+        
+        <% if(typeof errors != 'undefined') { %>
+            <% errors.forEach(error => { %>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <%=error.message %>
+                </div>
+            <% }) %>
+        <% } %>
     
-     
+        <% if(messages.success_msg) { %>
+            <div class="alert pos">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <%= messages.success_msg %>
+            </div>
+        <% } %>
+       
+
+<div class="cont postjob">
   
-   
+    <div class="form">
+      <form action="/admin/postjob" method="POST">
+        <h1>Post Job</h1>
+        <center>
+        <input type="text"
+               class="user"
+               placeholder="Name of Company"
+               name="companyname">
+        <input type="text"
+               class="user"
+               placeholder="Job Role"
+               name="role"/>
+        <input type="number"
+               class="user"
+               placeholder="Number of postings"
+               name="qty" min="1"/>
+        <input type="number"
+               class="user"
+               placeholder="Package in Rs"
+               name="package" min="1"/>
+        <input type="url" 
+               class="pass"
+               placeholder="Link to Apply"
+               name="link"/>
+        <input type="number" 
+               class="user"
+               placeholder="Minimun CGPA required"
+               name="gpa" min="0" max="10"/>
+        <input type="number" 
+               class="user"
+               placeholder="Maximum Backlogs Allowed"
+               name="backs" min="0"/>
+        <input type="text" 
+               class="user"
+               placeholder="Skills Required"
+               name="skills"/>
+        <select name="jobtype" id="jobtype" class="user" style="text-align-last: center;">
+            <option value="intern">Internship</option>
+            <option value="fulltime">Full Time</option>
+        </select><br>
+        <button class="login" type="submit">Register</button>
+    </center>
+      </form>
+    </div>
+    
+  
+  </div>
+        
+    </div>
+    
+    
+    
     
     
     <script src="/styles/landingpage.js"></script> 
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-   
 </body>
 
 
