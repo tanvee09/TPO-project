@@ -76,8 +76,8 @@ app.get("/admin/login", checkAuthenticated, (req, res) => {
     res.render("adminlogin.ejs");
 });
 
-app.get("/users/dashboard", checkNotAuthenticatedAsStudent, (req, res) => {
-    res.render("dashboard", { user: req.user.name });
+app.get("/users/profile", checkNotAuthenticatedAsStudent, (req, res) => {
+    res.render("dashboard", { user: req.user });
 });
 
 app.get("/users/logout", (req, res) => {

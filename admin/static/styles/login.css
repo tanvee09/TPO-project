@@ -136,3 +136,7 @@ h2{ color: #fff; margin-top: 25px; }
 .closebtn:hover {
   color: black;
 }
+
+br {
+  line-height: 12px;
+}

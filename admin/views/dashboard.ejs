@@ -1,18 +1,92 @@
-<!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TPO</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+    <title>Profile</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/7e09aa574b.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/landingpage.css">
+    <link rel="stylesheet" href="/styles/landingpage2.css">
+    <link rel="stylesheet" href="/styles/login.css">
+    
 </head>
 
+
 <body>
-    <a href="/users/logout">logout</a>
-    <h1>Hello <%= user.charAt(0).toUpperCase() + user.slice(1) %></h1>
+    
+    <nav class="navbar navbar-expand-lg navbar-mainbg" id='navnav'>
+        <a class="navbar-brand navbar-logo">TPO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="/media/hamburger.png" alt="">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/student">Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href=""></i>Profile</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/contact">Contact Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout"></i>Logout</a>
+                </li>
+               
+                
+                
+            </ul>
+        </div>
+    </nav>
+    <div id="bluebg">    
+        
+    <% if(typeof errors != 'undefined') { %>
+        <% errors.forEach(error => { %>
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <%=error.message %>
+            </div>
+        <% }) %>
+    <% } %>
+       
+
+<div class="cont postjob" style="margin: 1rem auto;">
+  
+    <h1 style="margin: 0.5rem auto 1rem auto;">USER PROFILE</h1>
+    <center>
+    <h3>Name:&nbsp;&nbsp; <%=user.name %></h3><br>
+    <h3>Email:&nbsp;&nbsp; <%=user.email %></h3><br>
+    <h3>Roll Number:&nbsp;&nbsp; <%=user.rno %></h3><br>
+    <h3>Branch:&nbsp;&nbsp; <%=user.branch %></h3><br>
+    <h3 style="display: inline-block; width: 49.5%;">CGPA:&nbsp;&nbsp; <%=user.gpa %></h3>
+    <h3 style="display: inline-block; width: 49.5%;">12th percentage:&nbsp;&nbsp; <%=user.perc %></h3><br><br>
+    <h3 style="display: inline-block; width: 49.5%;">Language 1:&nbsp;&nbsp; <%=user.lang1 %></h3>
+    <h3 style="display: inline-block; width: 49.5%;">Language 2: &nbsp;&nbsp;<%=user.lang2 %></h3><br><br>
+    <h3>Technology 1:&nbsp;&nbsp; <%=user.tech1 %></h3><br>
+    <h3>Technology 2:&nbsp;&nbsp; <%=user.tech2 %></h3><br>
+    <h3>Resume Link:&nbsp;&nbsp; <a href="<%=user.resumelink %>"><%=user.resumelink %></a></h3><br>
+    <h3>Drive Link:&nbsp;&nbsp; <a href="<%=user.resumelink %>"><%=user.drivelink %></a></h3><br>
+    </center>
+    <a href="/users/profileform" id="register">Edit profile</a> 
+  
+  </div>
+        
+    </div>
+    
+    
+    
+    
+    
+    <script src="/styles/landingpage.js"></script> 
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
 </body>
 
 

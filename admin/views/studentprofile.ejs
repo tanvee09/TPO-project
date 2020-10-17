@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Profile</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,15 +27,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item active">
-                    <a class="nav-link" href="">Dashboard</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/student">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/profile"></i>Profile</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="javascript:void(0);">Contact Admin</a>
+                    <a class="nav-link" href="/contact">Contact Admin</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/users/logout"></i>Logout</a>
-                </li>               
+                </li>
+               
+                
+                
             </ul>
         </div>
     </nav>
@@ -70,9 +76,9 @@
                name="rno">
         <select name="branch" id="branch" class="user" style="text-align-last: center;">
             <option value="" disabled selected>Branch</option>
-            <option value="cs">Computer Science</option>
-            <option value="it">Information Technology</option>
-            <option value="ece">Electronics and Communication Engineering</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
         </select>
         <input type="number"
                class="user"
@@ -80,45 +86,45 @@
                name="gpa" min="0" max="10"/>
         <input type="number"
                class="user"
-               placeholder="Percentage"
+               placeholder="12th Percentage"
                name="perc" min="0" max="100"/>
         <select name="lang1" id="lang1" class="user" style="text-align-last: center;">
             <option value="" disabled selected>Language 1</option>
-            <option value="cs">C++</option>
-            <option value="it">C</option>
-            <option value="py">Python</option>
-            <option value="java">Java</option>
-            <option value="haskell">Haskell</option>
-            <option value="rust">Rust</option>
-            <option value="go">Go</option>
+            <option value="C++">C++</option>
+            <option value="C">C</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="Haskell">Haskell</option>
+            <option value="Rust">Rust</option>
+            <option value="Go">Go</option>
         </select>
         <select name="lang2" id="lang2" class="user" style="text-align-last: center;">
             <option value="" disabled selected>Language 2</option>
-            <option value="cs">C++</option>
-            <option value="it">C</option>
-            <option value="py">Python</option>
-            <option value="java">Java</option>
-            <option value="haskell">Haskell</option>
-            <option value="rust">Rust</option>
-            <option value="go">Go</option>
+            <option value="C++">C++</option>
+            <option value="C">C</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="Haskell">Haskell</option>
+            <option value="Rust">Rust</option>
+            <option value="Go">Go</option>
         </select>
         <select name="tech1" id="tech1" class="user" style="text-align-last: center;">
             <option value="" disabled selected>Technology 1</option>
-            <option value="webdev">Web Development</option>
-            <option value="appdev">App Development</option>
-            <option value="mldl">Machine Learning / Deep Learning</option>
-            <option value="blockchain">Blockchain</option>
-            <option value="arvr">Augmented Reality / Virtual Reality</option>
-            <option value="gamedev">Game Development</option>
+            <option value="Web Development">Web Development</option>
+            <option value="App Development">App Development</option>
+            <option value="Machine Learning / Deep Learning">Machine Learning / Deep Learning</option>
+            <option value="Blockchain">Blockchain</option>
+            <option value="Augmented Reality / Virtual Reality">Augmented Reality / Virtual Reality</option>
+            <option value="Game Development">Game Development</option>
         </select>
         <select name="tech2" id="tech2" class="user" style="text-align-last: center;">
             <option value="" disabled selected>Technology 1</option>
-            <option value="webdev">Web Development</option>
-            <option value="appdev">App Development</option>
-            <option value="mldl">Machine Learning / Deep Learning</option>
-            <option value="blockchain">Blockchain</option>
-            <option value="arvr">Augmented Reality / Virtual Reality</option>
-            <option value="gamedev">Game Development</option>
+            <option value="Web Development">Web Development</option>
+            <option value="App Development">App Development</option>
+            <option value="Machine Learning / Deep Learning">Machine Learning / Deep Learning</option>
+            <option value="Blockchain">Blockchain</option>
+            <option value="Augmented Reality / Virtual Reality">Augmented Reality / Virtual Reality</option>
+            <option value="Game Development">Game Development</option>
         </select>
         <input type="url" 
                class="pass"
