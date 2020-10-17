@@ -52,6 +52,10 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
 
+app.get("/viewposting", (req, res) => {
+    res.render("viewposting.ejs");
+});
+
 app.get("/student",  checkNotAuthenticatedAsStudent, (req, res) => {
     res.render("studentpage.ejs");
 });
@@ -149,80 +153,72 @@ app.post("/users/register", async (req, res) => {
     }
 });
 
-// app.post("/users/profileform", async (req, res) => {
-//     let { 
-//         rno,
-//         branch,
-//         gpa,
-//         perc,
-//         lang1,
-//         lang2,
-//         lang3,
-//         langlink,
-//         tech1,
-//         tech2,
-//         techlink
-//      } = req.body;
+app.post("/users/profileform", async (req, res) => {
+    let { 
+        rno,
+        branch,
+        gpa,
+        perc,
+        lang1,
+        lang2,
+        tech1,
+        tech2,
+        resumelink
+     } = req.body;
 
-//     let errors = [];
+    let errors = [];
 
-//     console.log({
-//         name,
-//         email,
-//         password,
-//         password2
-//     });
+    console.log({
+        rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink
+    });
 
-//     if (!name || !email || !password || !password2) {
-//         errors.push({ message: "Please enter all fields" });
-//     }
+    if (!rno || !branch || !gpa || !perc || !lang1 || !lang2 || !tech1 || !tech2 || !resumelink) {
+        errors.push({ message: "Please enter all fields" });
+    }
 
-//     if (password.length < 6) {
-//         errors.push({ message: "Password must be a least 6 characters long" });
-//     }
+    if (errors.length > 0) {
+        res.render("studentprofile", { errors, rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink });
+    } else {
+        pool.query(
+            `SELECT * FROM users
+            WHERE rno = $1`,
+            [rno],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log(results.rows);
 
-//     if (password !== password2) {
-//         errors.push({ message: "Passwords do not match" });
-//     }
-
-//     if (errors.length > 0) {
-//         res.render("register", { errors, name, email, password, password2 });
-//     } else {
-//         hashedPassword = await bcrypt.hash(password, 10);
-//         console.log(hashedPassword);
-//         pool.query(
-//             `SELECT * FROM users
-//             WHERE email = $1`,
-//             [email],
-//             (err, results) => {
-//                 if (err) {
-//                     console.log(err);
-//                 }
-//                 console.log(results.rows);
-
-//                 if (results.rows.length > 0) {
-//                     errors.push({ message: "Email already registered" });
-//                     return res.render("register", { errors, name, email, password, password2 });
-//                 } else {
-//                     pool.query(
-//                         `INSERT INTO users (name, email, password, isadmin)
-//                         VALUES ($1, $2, $3, $4)
-//                         RETURNING id, password`,
-//                         [name, email, hashedPassword, '0'],
-//                         (err, results) => {
-//                             if (err) {
-//                                 throw err;
-//                             }
-//                             console.log(results.rows);
-//                             req.flash("success_msg", "You are now registered. Please log in.");
-//                             res.redirect("/users/login");
-//                         }
-//                     );
-//                 }
-//             }
-//         );
-//     }
-// });
+                if (results.rows.length > 0) {
+                    errors.push({ message: "Roll Number already registered" });
+                    return res.render("studentprofile.ejs", { errors, rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink });
+                } else {
+                    pool.query(
+                        `UPDATE users SET
+                        rno = $1,
+                        branch = $2,
+                        gpa = $3,
+                        perc = $4,
+                        lang1 = $5,
+                        lang2 = $6,
+                        tech1= $7,
+                        tech2 = $8,
+                        resumelink = $9
+                        WHERE email = $10`,
+                        [rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, req.user.email],
+                        (err, results) => {
+                            if (err) {
+                                throw err;
+                            }
+                            console.log(results.rows);
+                            req.flash("success_msg", "Details changed successfully!");
+                            res.redirect("/users/profileform");
+                        }
+                    );
+                }
+            });
+    }
+});
 
 
 app.post("/admin/mail", async (req, res) => {

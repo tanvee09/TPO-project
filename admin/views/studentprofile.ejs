@@ -1,192 +1,147 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Profile Form</title>
-
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="./styles/studentprofilecss/fonts/material-icon/css/material-design-iconic-font.min.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="./styles/studentprofilecss/css/style.css">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/7e09aa574b.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/landingpage.css">
+    <link rel="stylesheet" href="/styles/landingpage2.css">
+    <link rel="stylesheet" href="/styles/login.css">
+    
 </head>
+
+
 <body>
-
-    <div class="main">
-        <div class="container">
-            <div class="signup-content">
-                <!--<div class="signup-img">
-                    <img src="images/signup-img.jpg" alt="">
-                </div> -->
-                <div class="signup-form">
-                    <form method="POST" class="register-form" id="register-form" action="/users/profileform">
-                        <h2>student profile form</h2>
-                        <div class="form-group">
-                            <label for="college_roll">College Roll number :</label>
-                            <input type="text" name="rno" id="college_roll" required/>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="branch">Branch :</label>
-                            <div class="form-select">
-                                <select name="branch" id="branch">
-                                    <option value="cs">Computer Science and Engineering</option>
-                                    <option value="it">Information Technology</option>
-                                    <option value="ece">Electronics and Communication</option>
-                                </select>
-                                <span class="select-icon" style="color: whitesmoke;"><i class="zmdi zmdi-chevron-down"></i></span>
-                            </div>
-                        </div>
-
-
-<br>
-<!--EDUCATION-->
-                        <div>
-                        <h2>Education Details</h2>
-                        <!--College details-->
-                        <div class="form-row">
-                            
-                           
-                            <center><div class="form-group">
-                                    <label for="marks">Average GPA in College:</label>
-                                    <input type="number" name="gpa" id="marks" required/>
-                                </div></center>
-                           
-
-                            <center><div class="form-group">
-                                <label for="marks">Percentage in XIIth:</label>
-                                <input type="number" name="perc" id="marks" required/>
-                            </div></center>
-                        </div>
-                       
-
-                    </div>
-
-<!--Skills-->
-                <div>
-                    <h2>Skills</h2>
-                    <h4>Please upload drive link having your certificates or a doc link having links to your project repo/coding platform to validate each skill that you tick.</h4>
-                    <fieldset>
-                    <div class="form-group">
-                        <label for="lang">Programming Languages:</label>
-                        <div class="form-select">
-                            <select name="lang1" id="lang">
-                                <option value="">Language 1</option>
-                                <option value="cpp">C++</option>
-                                <option value="py">Python</option>
-                                <option value="java">Java</option>
-                                <option value="c">C</option>
-                            </select>
-                            <span class="select-icon" style="color: whitesmoke;"><i class="zmdi zmdi-chevron-down"></i></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        
-                        <div class="form-select">
-                            <select name="lang2" id="lang">
-                                <option value="">Language 2</option>
-                                <option value="cpp">C++</option>
-                                <option value="py">Python</option>
-                                <option value="java">Java</option>
-                                <option value="c">C</option>
-                            </select>
-                            <span class="select-icon" style="color: whitesmoke;"><i class="zmdi zmdi-chevron-down"></i></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                       
-                        <div class="form-select">
-                            <select name="lang3" id="lang">
-                                <option value="">Language 3</option>
-                                <option value="cpp">C++</option>
-                                <option value="py">Python</option>
-                                <option value="java">Java</option>
-                                <option value="c">C</option>
-                            </select>
-                            <span class="select-icon" style="color: whitesmoke;"><i class="zmdi zmdi-chevron-down"></i></span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="lang">Supporting Link</label>
-                        <input type="url" name="langlink">
-                    </div>
-                    <div>
-                        
-                    </div>
-                </fieldset>
-                      <fieldset>
-                        <div class="form-group">
-                            <label for="lang">Technologies:</label>
-                            <div class="form-select">
-                                <select name="tech1" id="lang">
-                                    <option value="">Select Tech 1</option>
-                                    <option value="appdev">App Dev</option>
-                                    <option value="mldl">Machine Learning/Deep Learning</option>
-                                    <option value="webdev">Web Dev</option>
-                                </select>
-                                <span class="select-icon" style="color: whitesmoke;"><i class="zmdi zmdi-chevron-down"></i></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="lang">Technologies:</label>
-                            <div class="form-select">
-                                <select name="tech2" id="lang">
-                                    <option value="">Select Tech 2</option>
-                                    <option value="appdev">App Web/Web Dev</option>
-                                    <option value="mldl">Machine Learning/Deep Learning</option>
-                                    <option value="webdev"></option>
-                                </select>
-                                <span class="select-icon" style="color: whitesmoke;"><i class="zmdi zmdi-chevron-down"></i></span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="lang">Supporting Link</label>
-                            <input type="url" name="techlink">
-                        </div>
-                        
-                      </fieldset>
-
-                    </div>
-
-                    <br>
-
-<!--Projects-->
-                
-
-<!--Achievements-->
-
-
-<!--Experiences-->       
-                
-    <!--Resume-->
-        <div>
-            <h2>Resume</h2>
-            <fieldset>
-                <legend>Upload your Resume here</legend>
-                <input type="file" id="myFile" name="filename">
-
-            </fieldset>
-        </div> 
-
-
-                        
-                        <div class="form-submit">
-                            <input type="submit" value="Reset All" class="submit" name="reset" id="reset" />
-                            <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
-                        </div>
-                    </form>
-                </div>
-            </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-mainbg" id='navnav'>
+        <a class="navbar-brand navbar-logo">TPO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="/media/hamburger.png" alt="">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Dashboard</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="javascript:void(0);">Contact Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout"></i>Logout</a>
+                </li>               
+            </ul>
         </div>
+    </nav>
+    <div id="bluebg">    
+        
+        <% if(typeof errors != 'undefined') { %>
+            <% errors.forEach(error => { %>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <%=error.message %>
+                </div>
+            <% }) %>
+        <% } %>
+    
+        <% if(messages.success_msg) { %>
+            <div class="alert pos">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <%= messages.success_msg %>
+            </div>
+        <% } %>
+       
 
+<div class="cont postjob">
+  
+    <div class="form">
+      <form action="/users/profileform" method="POST">
+        <h1>FILL DETAILS</h1>
+        <center>
+        <input type="text"
+               class="user"
+               placeholder="Roll Number"
+               name="rno">
+        <select name="branch" id="branch" class="user" style="text-align-last: center;">
+            <option value="" disabled selected>Branch</option>
+            <option value="cs">Computer Science</option>
+            <option value="it">Information Technology</option>
+            <option value="ece">Electronics and Communication Engineering</option>
+        </select>
+        <input type="number"
+               class="user"
+               placeholder="CGPA"
+               name="gpa" min="0" max="10"/>
+        <input type="number"
+               class="user"
+               placeholder="Percentage"
+               name="perc" min="0" max="100"/>
+        <select name="lang1" id="lang1" class="user" style="text-align-last: center;">
+            <option value="" disabled selected>Language 1</option>
+            <option value="cs">C++</option>
+            <option value="it">C</option>
+            <option value="py">Python</option>
+            <option value="java">Java</option>
+            <option value="haskell">Haskell</option>
+            <option value="rust">Rust</option>
+            <option value="go">Go</option>
+        </select>
+        <select name="lang2" id="lang2" class="user" style="text-align-last: center;">
+            <option value="" disabled selected>Language 2</option>
+            <option value="cs">C++</option>
+            <option value="it">C</option>
+            <option value="py">Python</option>
+            <option value="java">Java</option>
+            <option value="haskell">Haskell</option>
+            <option value="rust">Rust</option>
+            <option value="go">Go</option>
+        </select>
+        <select name="tech1" id="tech1" class="user" style="text-align-last: center;">
+            <option value="" disabled selected>Technology 1</option>
+            <option value="webdev">Web Development</option>
+            <option value="appdev">App Development</option>
+            <option value="mldl">Machine Learning / Deep Learning</option>
+            <option value="blockchain">Blockchain</option>
+            <option value="arvr">Augmented Reality / Virtual Reality</option>
+            <option value="gamedev">Game Development</option>
+        </select>
+        <select name="tech2" id="tech2" class="user" style="text-align-last: center;">
+            <option value="" disabled selected>Technology 1</option>
+            <option value="webdev">Web Development</option>
+            <option value="appdev">App Development</option>
+            <option value="mldl">Machine Learning / Deep Learning</option>
+            <option value="blockchain">Blockchain</option>
+            <option value="arvr">Augmented Reality / Virtual Reality</option>
+            <option value="gamedev">Game Development</option>
+        </select>
+        <input type="url" 
+               class="pass"
+               placeholder="Link to Resume"
+               name="resumelink"/><br>
+        <button class="login" type="submit">Submit</button>
+    </center>
+      </form>
     </div>
+    
+  
+  </div>
+        
+    </div>
+    
+    
+    
+    
+    
+    <script src="/styles/landingpage.js"></script> 
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+</body>
 
-    <!-- JS -->
-    <script src="./styles/studentprofilecss/jquery/jquery.min.js"></script>
-    <script src="./styles/studentprofilecss/js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 </html>

@@ -1,0 +1,43 @@
+body{
+    background-image: url(/media/cool-background.png);
+}
+
+h1{
+    margin-top: 300px;
+    margin-left: 60px;
+    padding: 17px;
+    background-color: aquamarine;
+    border-radius: 20px;
+    height: 55px;
+    color: rgb(16, 16, 129);
+    text-align: center;
+    box-shadow: 5px 5px 15px rgb(238, 241, 16);
+}
+
+.details{
+    margin-top: 70px;
+    margin-left: 280px;
+    margin-right: 280px;
+    height: 220px;
+    padding: 17px;
+    text-align: center;
+    background-color: rgb(16, 16, 129);
+    color: whitesmoke;
+    font-family: roboto;
+    border-radius: 25px;
+    box-shadow: 5px 5px 15px aquamarine;
+}
+#apply_link{
+    margin-left: 570px;
+    margin-top: 20px;
+    text-align: center;
+    width: 95px;
+    height: 30px;
+    background-color: rgb(24, 238, 106);
+    color: rgb(241, 13, 51);
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px aquamarine;
+    font-weight: bold;
+    font-family: Commissioner;
+    font-size: large;
+}
