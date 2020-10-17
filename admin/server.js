@@ -113,6 +113,21 @@ app.get("/viewposting", (req, res) => {
     );
 });
 
+app.get("/admin/viewstudents", checkNotAuthenticatedAsAdmin, (req, res) => {
+    pool.query(
+        `SELECT * FROM users WHERE isAdmin = FALSE ORDER BY rno`,
+        [],
+        (err, results) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log(results.rows);
+
+            res.render("studentdet.ejs", { students: results.rows });
+        }
+    );
+});
+
 app.post("/users/register", async (req, res) => {
     let { name, email, password, password2 } = req.body;
 
