@@ -1,0 +1,40 @@
+body{
+  background-image: url(/media/cool-background.png);
+  background-size: cover;
+}
+
+h1{
+    text-align: center;
+    margin-top: 2rem;
+    color: white;
+}
+
+#students {
+    margin: 65px;
+    border-collapse: collapse;
+    width: 90%;
+    background: rgba(155, 155, 155, 0.705);
+  }
+  
+  #students td, #students th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #students tr:nth-child(even){background: rgba(155, 155, 155, 0.705);;}
+  #students tr:nth-child(odd){background: rgba(185, 185, 185, 0.705);}
+  
+  #students tr:hover {background-color: rgb(190, 190, 190);}
+  
+  #students th {
+
+    height: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(37, 37, 37);
+    color: white;
+  }
+  td{
+      height: 20px;
+  }
