@@ -177,6 +177,7 @@ app.post("/users/register", async (req, res) => {
 });
 
 app.post("/users/profileform", async (req, res) => {
+    let id = req.user.id;
     let { 
         rno,
         branch,
@@ -216,6 +217,7 @@ app.post("/users/profileform", async (req, res) => {
                     errors.push({ message: "Roll Number already registered" });
                     return res.render("studentprofile.ejs", { errors, rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink });
                 } else {
+
                     pool.query(
                         `UPDATE users SET
                         rno = $1,
@@ -227,8 +229,8 @@ app.post("/users/profileform", async (req, res) => {
                         tech1= $7,
                         tech2 = $8,
                         resumelink = $9
-                        WHERE email = $10`,
-                        [rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, req.user.email],
+                        WHERE id = $10`,
+                        [rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, id],
                         (err, results) => {
                             if (err) {
                                 throw err;
