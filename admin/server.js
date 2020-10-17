@@ -52,6 +52,20 @@ app.get("/student",  (req, res) => {
     res.render("studentpage.ejs");
 });
 
+app.get("/contact",  (req, res) => {
+    res.render("contact.ejs");
+});
+
+app.get("/prep",  (req, res) => {
+    res.render("prepcorner.ejs");
+});
+
+app.get("/ds",  (req, res) => {
+    res.render("ds.ejs");
+});
+
+
+
 app.get("/adminpage", checkNotAuthenticatedAsAdmin, (req, res) => {
     res.render("adminpage.ejs");
 });

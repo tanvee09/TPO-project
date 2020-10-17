@@ -7,6 +7,9 @@
 .gr-1  {
   background: linear-gradient(170deg, #9bc3ff 0%, rgb(8, 204, 122) 100%);
 }
+.gr-3 {
+  background: linear-gradient(170deg, #79a1dd 0%, rgb(179, 179, 179) 100%);
+}
 
 * {
   transition: .5s;

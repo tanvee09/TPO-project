@@ -22,6 +22,16 @@ body{
   background: rgba(155, 155, 155, 0.705);
   border-radius: 8px;
 }
+#sugg{
+  text-align: center;
+}
+
+h3{
+  background-color: #000000;
+  border-radius: 20px;
+  color: #fff;
+  text-align: center;
+}
 
 .cont.register {
   height: 550px;
