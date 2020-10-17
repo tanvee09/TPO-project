@@ -187,26 +187,27 @@ app.post("/users/profileform", async (req, res) => {
         lang2,
         tech1,
         tech2,
-        resumelink
+        resumelink,
+        drivelink
      } = req.body;
 
     let errors = [];
 
     console.log({
-        rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink
+        rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, drivelink
     });
 
-    if (!rno || !branch || !gpa || !perc || !lang1 || !lang2 || !tech1 || !tech2 || !resumelink) {
+    if (!rno || !branch || !gpa || !perc || !lang1 || !lang2 || !tech1 || !tech2 || !resumelink || !drivelink) {
         errors.push({ message: "Please enter all fields" });
     }
 
     if (errors.length > 0) {
-        res.render("studentprofile", { errors, rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink });
+        res.render("studentprofile", { errors, rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, drivelink });
     } else {
         pool.query(
             `SELECT * FROM users
-            WHERE rno = $1`,
-            [rno],
+            WHERE rno = $1 and id <> $2`,
+            [rno, id],
             (err, results) => {
                 if (err) {
                     console.log(err);
@@ -215,7 +216,7 @@ app.post("/users/profileform", async (req, res) => {
 
                 if (results.rows.length > 0) {
                     errors.push({ message: "Roll Number already registered" });
-                    return res.render("studentprofile.ejs", { errors, rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink });
+                    return res.render("studentprofile.ejs", { errors, rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, drivelink });
                 } else {
 
                     pool.query(
@@ -228,9 +229,10 @@ app.post("/users/profileform", async (req, res) => {
                         lang2 = $6,
                         tech1= $7,
                         tech2 = $8,
-                        resumelink = $9
-                        WHERE id = $10`,
-                        [rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, id],
+                        resumelink = $9,
+                        drivelink = $10
+                        WHERE id = $11`,
+                        [rno, branch, gpa, perc, lang1, lang2, tech1, tech2, resumelink, drivelink, id],
                         (err, results) => {
                             if (err) {
                                 throw err;
