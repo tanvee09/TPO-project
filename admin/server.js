@@ -294,27 +294,27 @@ app.post("/admin/mail", async (req, res) => {
 });
 
 app.post("/admin/postjob", async (req, res) => {
-    let { companyname, role, qty, package, link, gpa, backs, skills } = req.body;
+    let { companyname, role, qty, package, link, gpa, backs, skills, jobtype } = req.body;
 
     let errors = [];
 
     console.log({
-        companyname, role, qty, package, link, gpa, backs, skills
+        companyname, role, qty, package, link, gpa, backs, skills, jobtype
     });
 
-    if (!companyname || !role || !qty || !package || !link || !gpa || !backs || !skills) {
+    if (!companyname || !role || !qty || !package || !link || !gpa || !backs || !skills || !jobtype) {
         errors.push({ message: "Please enter all fields" });
     }
 
     if (errors.length > 0) {
-        res.render("postjob", { errors, companyname, role, qty, package, link, gpa, backs, skills });
+        res.render("postjob", { errors, companyname, role, qty, package, link, gpa, backs, skills, jobtype });
     } else {
 
         pool.query(
-            `INSERT INTO postings (companyname, role, qty, package, link, gpa, backs, skills)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            `INSERT INTO postings (companyname, role, qty, package, link, gpa, backs, skills, jobtype)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING companyname, role`,
-            [companyname, role, qty, package, link, gpa, backs, skills],
+            [companyname, role, qty, package, link, gpa, backs, skills, jobtype],
             (err, results) => {
                 if (err) {
                     throw err;
