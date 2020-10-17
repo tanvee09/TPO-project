@@ -52,10 +52,6 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
     res.render("login.ejs");
 });
 
-app.get("/viewposting", (req, res) => {
-    res.render("viewposting.ejs");
-});
-
 app.get("/student",  checkNotAuthenticatedAsStudent, (req, res) => {
     res.render("studentpage.ejs");
 });
@@ -71,8 +67,6 @@ app.get("/prep",  (req, res) => {
 app.get("/ds",  (req, res) => {
     res.render("ds.ejs");
 });
-
-
 
 app.get("/adminpage", checkNotAuthenticatedAsAdmin, (req, res) => {
     res.render("adminpage.ejs");
@@ -102,6 +96,21 @@ app.get("/admin/mail", checkNotAuthenticatedAsAdmin, (req, res) => {
 
 app.get("/admin/postjob", checkNotAuthenticatedAsAdmin, (req, res) => {
     res.render("postjob.ejs");
+});
+
+app.get("/viewposting", (req, res) => {
+    pool.query(
+        `SELECT * FROM postings`,
+        [],
+        (err, results) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log(results.rows);
+
+            res.render("viewposting", { postings: results.rows });
+        }
+    );
 });
 
 app.post("/users/register", async (req, res) => {

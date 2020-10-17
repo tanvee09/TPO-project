@@ -8,21 +8,24 @@
 <body>
 <div class="post-box">
     <h1>Company_Name invites number_of_postings new job_role job/intern</h1>
-    <!--For eg: TCS invites 25 new software engineer interns-->
-    <div class="details">
-        Company/Organization: TCS <br><br>
-        Job/Role: Software Developer <br><br>
-        Job/Intern: Job <br><br>
-        Package/Stipend: 50,000 per month <br><br>
-        Skills Required: Problem Solving, C++, Python <br><br>
-        Cut-off GPA: 7.5 <br><br>
-        Maximum Back Logs Allowed: 1 <br><br>
-    </div>
-    <br>
-    <br>
-    <a href="#"> <!--Get the link to apply over here-->
-        <input type="url" id="apply_link" value="Apply Now">
-    </a>
+
+    <% postings.forEach(posting => { %>
+        <div class="details">
+            Company: <%=posting.companyname %> <br><br>
+            Role: <%=posting.role %><br><br>
+            Position: <%=posting.jobtype %><br><br>
+            Package/Stipend: <%=posting.package %> Rs. <br><br>
+            Skills Required: P<%=posting.skills %> <br><br>
+            Cut-off GPA: <%=posting.gpa %> <br><br>
+            Maximum Back Logs Allowed: <%=posting.backs %> <br><br>
+        </div>
+        <br><br>
+        <center>
+        <a style="color: white;" target='_blank' href='<%=posting.link %>'>Apply here</a>
+        </center>
+    <% }) %>
+
+    
 </div>
 
 </body>
