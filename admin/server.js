@@ -108,7 +108,7 @@ app.get("/viewposting", (req, res) => {
             }
             console.log(results.rows);
 
-            res.render("viewposting", { postings: results.rows });
+            res.render("filterpostings", { postings: results.rows });
         }
     );
 });
@@ -360,6 +360,126 @@ app.post("/admin/postjob", async (req, res) => {
                 console.log(results.rows);
                 req.flash("success_msg", "Job posted succesfully!");
                 res.redirect("/admin/postjob");
+            }
+        );
+    }
+});
+
+app.post("/viewposting", (req, res) => {
+    let { gpalmt, backlmt, jobtype} = req.body;
+
+    let errors = [];
+    
+    if (!gpalmt && !backlmt && (!jobtype || jobtype=='')) {
+        pool.query(
+            `SELECT * FROM postings`,
+            [],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 1");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
+            }
+        );
+    } if (!gpalmt && !backlmt) {
+        pool.query(
+            `SELECT * FROM postings WHERE jobtype=$1`,
+            [jobtype],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 2");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
+            }
+        );
+    } else if (!backlmt && (!jobtype || jobtype=='')) {
+        pool.query(
+            `SELECT * FROM postings WHERE gpa>=$1`,
+            [gpalmt],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 3");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
+            }
+        );
+    } else if (!gpalmt || (!jobtype || jobtype=='')) {
+        pool.query(
+            `SELECT * FROM postings WHERE backs>=$1`,
+            [backlmt],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 4");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
+            }
+        );
+    } else if (!gpalmt) {
+        pool.query(
+            `SELECT * FROM postings WHERE jobtype=$1 and backs>=$2`,
+            [jobtype, backlmt],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 5");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
+            }
+        );
+    } else if (!backlmt) {
+        pool.query(
+            `SELECT * FROM postings WHERE gpa<=$1 and jobtype=$2`,
+            [gpalmt, jobtype],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 6");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
+            }
+        );
+    } else if (!jobtype || jobtype=='') {
+        pool.query(
+            `SELECT * FROM postings WHERE gpa<=$1 and backs>=$2`,
+            [gpa, backlmt],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 7");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
+            }
+        );
+    } else {
+        pool.query(
+            `SELECT * FROM postings WHERE jobtype=$1 and backs>=$2 and gpa<=$3`,
+            [jobtype, backlmt, gpalmt],
+            (err, results) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log("In 8");
+                console.log(results.rows);
+    
+                res.render("filterpostings", { postings: results.rows });
             }
         );
     }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+    <title>Job/Intern Post</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/styles/viewposts.css"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/7e09aa574b.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/landingpage.css">
+ 
+    <link rel="stylesheet" href="/styles/landingpage3.css">
+    <link rel="stylesheet" href="/styles/filterpage.css">
+    
+    </head>
+<body>
+     
+    <nav class="navbar navbar-expand-lg navbar-mainbg" id='navnav'>
+        <a class="navbar-brand navbar-logo">TPO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="/media/hamburger.png" alt="">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Dashboard</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/login"></i>Admin login</a>
+                </li>
+               
+                <li class="nav-item ">
+                  <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Student Login</a>
+                </li>
+                 
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <form class="filterform" action="/users/jobfilter" method="POST">
+        <input type="number" name="gpalmt" class="inp" placeholder="GPA cutoff">
+        <input type="number" name="backlmt" class="inp" placeholder="Maxm Backs Allowed">
+        <select name="jobtype" id="jobtype" class="inp biggie" style="text-align-last: center;">
+            <option value="" disabled selected>Job Type</option>
+            <option value="Internship">Internship</option>
+            <option value="Full Time">Full Time</option>
+        </select>
+        <button type="submit" class="btn btn-success">Apply Filter</button>
+    </form>
+<div class="post-box">
+    <h1>JOB POSTINGS</h1>
+
+    <% postings.forEach(posting => { %>
+        <div class=" conatiner details">
+            Company: <%=posting.companyname %> <br><br>
+            Role: <%=posting.role %><br><br>
+            Position: <%=posting.jobtype %><br><br>
+            Package/Stipend: <%=posting.package %> Rs. <br><br>
+            Skills Required: <%=posting.skills %> <br><br>
+            Cut-off GPA: <%=posting.gpa %> <br><br>
+            Maximum Back Logs Allowed: <%=posting.backs %> <br><br>
+            <center>
+                <a style="color: white;" target='_blank' href='<%=posting.link %>'><button class="btn btn-primary">Apply here</button> </a>
+                </center>
+
+        </div>
+        
+    <% }) %>
+
+    <script src="/styles/landingpage.js"></script> 
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+   
+</div>
+
+</body>
+
+</html>

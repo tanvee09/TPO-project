@@ -1,0 +1,22 @@
+.filterform {
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    padding: 1rem;
+    background: rgba(155, 155, 155, 0.705);
+}
+
+.inp {
+    height: 2rem;
+    background-color: white;
+    padding: 5px;
+    text-align: center;
+    margin: 1rem 2rem;
+    width: 12rem;
+    border: none;
+}
+
+.btn {
+    margin: 1rem 2rem;
+}
