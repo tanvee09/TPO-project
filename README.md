@@ -1,3 +1,10 @@
-# TPO Hackathon Project
+# Made for hackinUTU
 
-Automation of Training and Placement Cell of a college.
+# TPO Automation
+
+Automation of Training and Placement Cell activities of a college.
+
+## Team # 56
+- Ravisha Sharma
+- Tanvee Balhara
+- Vidhi Shah
