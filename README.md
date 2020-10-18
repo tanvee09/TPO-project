@@ -1,8 +1,7 @@
-# Made for hackinUTU
-
 # TPO Automation
 
-Automation of Training and Placement Cell activities of a college.
+Web App for automation of Training and Placement Cell activities of a college  
+Entry for hackinUTU
 
 ## Team # 56
 - Ravisha Sharma
